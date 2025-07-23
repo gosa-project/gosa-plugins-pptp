@@ -103,7 +103,7 @@ class pptpAccount extends plugin
             new log("remove", "users/" . get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
             if (!$ldap->success()) {
-                msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+                msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, __CLASS__));
             }
 
             /* Optionally execute a command after we're done */
@@ -158,7 +158,7 @@ class pptpAccount extends plugin
         }
 
         if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, __CLASS__));
         }
 
         /* Optionally execute a command after we're done */
@@ -185,7 +185,7 @@ class pptpAccount extends plugin
             "plCategory"    => array("users"),
             "plRequirements" => array(
                 'ldapSchema' => array('pptpServerAccount' => ''),
-                'onFailureDisablePlugin' => array(get_class())
+                'onFailureDisablePlugin' => array(__CLASS__)
             ),
             "plOptions"       => array(),
 
